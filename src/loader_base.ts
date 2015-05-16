@@ -22,8 +22,6 @@ import WWAData = loader_wwa_data.WWAData;
 import WWADataExtractor = loader_extractor.WWADataExtractor;
 import WWALoader = loader_core.WWALoader;
 
-
-
 function loader_start( e: MessageEvent ): void {
      if (e.data.fileName !== void 0) {
         var loader: WWALoader = new WWALoader(e.data.fileName);
