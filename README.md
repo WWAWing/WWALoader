@@ -6,6 +6,7 @@ WebWorkers対応版( wwaload.js )と WebWorkers非対応版( wwaload.noworker.js
 
 ## ライセンス
 - MIT License。詳しくは「LICENSE」ファイルを参照。
+
 ### 同梱物のライセンスについて
 テスト用にスタンダードマップのデータ「wwamap.dat」を同梱していますが、このファイルの著作権の取り扱いについてはキャラバンサークル
 ( http://wwajp.com )で定める通りとします。
