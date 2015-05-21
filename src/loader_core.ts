@@ -123,10 +123,14 @@ module loader_core {
             } else {
                 this._getMessageFromData();
             }
-            if (this._srcData[WWADataExtractor.POS_VERSION] >= 29) {
-                this._dataJSObj.worldPassNumber = ((parseInt(this._dataJSObj.worldPassword) / 10 - 1197) / 17 - 2357);
+            if( this._dataJSObj.worldPassword === "" ) {
+                this._dataJSObj.worldPassNumber = 0;
             } else {
-                this._dataJSObj.worldPassNumber = parseInt(this._dataJSObj.worldPassword);
+                if (this._srcData[WWADataExtractor.POS_VERSION] >= 29) {
+                    this._dataJSObj.worldPassNumber = ((parseInt(this._dataJSObj.worldPassword) / 10 - 1197) / 17 - 2357);
+                } else {
+                    this._dataJSObj.worldPassNumber = parseInt(this._dataJSObj.worldPassword);
+                }
             }
             this._dataJSObj.charCGName = this._getMessageFromData();
             this._dataJSObj.mapCGName = this._getMessageFromData();
