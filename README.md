@@ -14,7 +14,7 @@ WebWorkers対応版( wwaload.js )と WebWorkers非対応版( wwaload.noworker.js
 ## とりあえず触りたい人へ
 - src ディレクトリにすべての元になっているTypeScriptソースがあります。
 - ビルドはこのREADMEがあるディレクトリで、端末等から<code>make</code>でできます。 
-- TypeScriptのコンパイラとGoogle Closure Compilerが必要です。ディレクトリ「closure」にコンパイラのjarファイルを置いてください。
+- TypeScriptのコンパイラとGoogle Closure Compilerが必要です。ディレクトリ「closure」にClosure Compilerのjarファイルを置いてください。
 - 成果物は、TypeScriptでコンパイルした結果が「wwa.long.js」で、Closure Compilerで minify した結果が「wwa.js」です。
 
 ## その他
