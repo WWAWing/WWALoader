@@ -16,6 +16,8 @@ wwaload.long.noworker.js: ./src/loader_base.ts ./src/noworker/loader_config.ts .
 	$(RM) ./src/noworker/loader_extractor.ts
 	$(RM) ./src/noworker/loader_util.ts
 	$(RM) ./src/noworker/wwa_data.ts
+	$(RM) ./src/noworker/$@
+	$(RM) ./src/noworker/wwaload.long.noworker.js.map
 
 wwaload.js: wwaload.long.js closure/compiler.jar
 	java -jar ./closure/compiler.jar < $< > $@
