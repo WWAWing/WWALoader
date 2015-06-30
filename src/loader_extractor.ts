@@ -259,7 +259,10 @@ module loader_extractor {
 
         }
 */
+        
         private _replaceAllRandomObjects(): void {
+          /*
+           * // 廃止
             var x, y;
             var partsID, partsType;
             for (x = 0; x < this._wwaData.mapWidth; x++) {
@@ -276,6 +279,7 @@ module loader_extractor {
                     }
                 }
             }
+            */
             loader_core.sendProgressToMainProgram(
                 this._wwaData.mapWidth * this._wwaData.mapWidth, this._wwaData.mapWidth * this._wwaData.mapWidth,
                 loader_wwa_data.LoadStage.RAND_PARTS

@@ -634,19 +634,25 @@ var loader_extractor;
                 }
         */
         WWADataExtractor.prototype._replaceAllRandomObjects = function () {
-            var x, y;
-            var partsID, partsType;
-            for (x = 0; x < this._wwaData.mapWidth; x++) {
-                for (y = 0; y < this._wwaData.mapWidth; y++) {
-                    partsID = this._wwaData.mapObject[x][y];
-                    partsType =
-                        this._wwaData.objectAttribute[partsID][WWAConsts.ATR_TYPE];
-                    if (partsType === WWAConsts.OBJECT_RANDOM) {
-                        this._replaceRandomObject(partsID, x, y);
-                        loader_core.sendProgressToMainProgram(x * this._wwaData.mapWidth + y, this._wwaData.mapWidth * this._wwaData.mapWidth, loader_wwa_data.LoadStage.RAND_PARTS);
-                    }
-                }
-            }
+            /*
+             * // 廃止
+              var x, y;
+              var partsID, partsType;
+              for (x = 0; x < this._wwaData.mapWidth; x++) {
+                  for (y = 0; y < this._wwaData.mapWidth; y++) {
+                      partsID = this._wwaData.mapObject[x][y];
+                      partsType =
+                      this._wwaData.objectAttribute[partsID][WWAConsts.ATR_TYPE];
+                      if (partsType === WWAConsts.OBJECT_RANDOM) {
+                          this._replaceRandomObject(partsID, x, y);
+                              loader_core.sendProgressToMainProgram(
+                                  x * this._wwaData.mapWidth + y, this._wwaData.mapWidth * this._wwaData.mapWidth,
+                                  loader_wwa_data.LoadStage.RAND_PARTS
+                                  );
+                      }
+                  }
+              }
+              */
             loader_core.sendProgressToMainProgram(this._wwaData.mapWidth * this._wwaData.mapWidth, this._wwaData.mapWidth * this._wwaData.mapWidth, loader_wwa_data.LoadStage.RAND_PARTS);
         };
         WWADataExtractor.prototype._replaceRandomObject = function (partsID, x, y) {
