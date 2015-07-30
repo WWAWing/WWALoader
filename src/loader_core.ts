@@ -245,7 +245,9 @@ module loader_core {
 
         private _getMessageFromData(): string {
             var str = "";
-            for (var i = 0; i < 1000; i++) {
+            // WWA V3.10 Fix (Unicode Byte-length Problem, 1000->1500)
+            // see also: http://wwajp.com/making.html
+            for (var i = 0; i < 1500; i++) {
                 if (
                     this._srcData[this._currentPos + i * 2] == 0 &&
                     this._srcData[this._currentPos + i * 2 + 1] == 0
