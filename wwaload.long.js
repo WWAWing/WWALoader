@@ -280,10 +280,12 @@ var loader_core;
         };
         WWALoader.prototype._loadAllTextData = function () {
             var i;
-            if (this._srcData[WWADataExtractor.POS_VERSION] >= 30) {
+            //            if (this._srcData[WWADataExtractor.POS_VERSION] >= 30) {
+            if (this._dataJSObj.version >= 30) {
                 this._dataJSObj.worldPassword = this._getMessageFromData();
             }
-            if (this._srcData[WWADataExtractor.POS_VERSION] <= 29) {
+            //            if (this._srcData[WWADataExtractor.POS_VERSION] <= 29) {
+            if (this._dataJSObj.version <= 29) {
                 this._dataJSObj.messageNum = WWALoader.OLDVER_MESSAGE_MAX;
             }
             this._dataJSObj.message = new Array(this._dataJSObj.messageNum);
@@ -300,7 +302,8 @@ var loader_core;
             }
             loader_core.sendProgressToMainProgram(this._dataJSObj.message.length, this._dataJSObj.message.length, loader_wwa_data.LoadStage.MESSAGE);
             this._dataJSObj.worldName = this._getMessageFromData();
-            if (this._srcData[WWADataExtractor.POS_VERSION] <= 29) {
+            //            if (this._srcData[WWADataExtractor.POS_VERSION] <= 29) {
+            if (this._dataJSObj.version <= 29) {
                 this._dataJSObj.worldPassword = this._getMessageFromData();
             }
             else {
@@ -310,7 +313,8 @@ var loader_core;
                 this._dataJSObj.worldPassNumber = 0;
             }
             else {
-                if (this._srcData[WWADataExtractor.POS_VERSION] >= 29) {
+                //                if (this._srcData[WWADataExtractor.POS_VERSION] >= 29) {
+                if (this._dataJSObj.version >= 29) {
                     this._dataJSObj.worldPassNumber = ((parseInt(this._dataJSObj.worldPassword) / 10 - 1197) / 17 - 2357);
                 }
                 else {
@@ -321,7 +325,7 @@ var loader_core;
             this._dataJSObj.mapCGName = this._getMessageFromData();
             this._dataJSObj.systemMessage = new Array(WWAConsts.SYSTEM_MESSAGE_NUM);
             for (i = 0; i < WWAConsts.SYSTEM_MESSAGE_NUM; i++) {
-                if (this._srcData[WWADataExtractor.POS_VERSION] >= 30) {
+                if (this._dataJSObj.version >= 30) {
                     this._dataJSObj.systemMessage[i] = this._getMessageFromData();
                 }
                 else {

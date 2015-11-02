@@ -87,11 +87,13 @@ module loader_core {
 
         private _loadAllTextData(): void {
             var i;
-            if (this._srcData[WWADataExtractor.POS_VERSION] >= 30) {
+//            if (this._srcData[WWADataExtractor.POS_VERSION] >= 30) {
+              if (this._dataJSObj.version >= 30) {
                 this._dataJSObj.worldPassword = this._getMessageFromData();
             }
 
-            if (this._srcData[WWADataExtractor.POS_VERSION] <= 29) {
+//            if (this._srcData[WWADataExtractor.POS_VERSION] <= 29) {
+            if (this._dataJSObj.version <= 29) {
                 this._dataJSObj.messageNum = WWALoader.OLDVER_MESSAGE_MAX;
             }
 
@@ -118,7 +120,8 @@ module loader_core {
                     );
 
             this._dataJSObj.worldName = this._getMessageFromData();
-            if (this._srcData[WWADataExtractor.POS_VERSION] <= 29) {
+//            if (this._srcData[WWADataExtractor.POS_VERSION] <= 29) {
+            if (this._dataJSObj.version <= 29) {
                 this._dataJSObj.worldPassword = this._getMessageFromData();
             } else {
                 this._getMessageFromData();
@@ -126,7 +129,8 @@ module loader_core {
             if( this._dataJSObj.worldPassword === "" ) {
                 this._dataJSObj.worldPassNumber = 0;
             } else {
-                if (this._srcData[WWADataExtractor.POS_VERSION] >= 29) {
+//                if (this._srcData[WWADataExtractor.POS_VERSION] >= 29) {
+                if (this._dataJSObj.version >= 29) {
                     this._dataJSObj.worldPassNumber = ((parseInt(this._dataJSObj.worldPassword) / 10 - 1197) / 17 - 2357);
                 } else {
                     this._dataJSObj.worldPassNumber = parseInt(this._dataJSObj.worldPassword);
@@ -136,7 +140,7 @@ module loader_core {
             this._dataJSObj.mapCGName = this._getMessageFromData();
             this._dataJSObj.systemMessage = new Array(WWAConsts.SYSTEM_MESSAGE_NUM);
             for (i = 0; i < WWAConsts.SYSTEM_MESSAGE_NUM; i++) {
-                if (this._srcData[WWADataExtractor.POS_VERSION] >= 30) {
+                if (this._dataJSObj.version >= 30) {
                     this._dataJSObj.systemMessage[i] = this._getMessageFromData()
                 } else {
                     this._dataJSObj.systemMessage[i] = "";
