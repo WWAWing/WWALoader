@@ -1,5 +1,5 @@
 ﻿var use_worker = true;
-var EXTRACTING_MAPDATA_FILENAME = "island01.dat"; // 吸い出すファイル名
+var EXTRACTING_MAPDATA_FILENAME = "wwamap.dat"; // 吸い出すファイル名
 
 var t_start;
 var t_end;
