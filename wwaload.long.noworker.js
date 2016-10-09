@@ -33,7 +33,11 @@ var loader_wwa_data;
         WWAConsts.ATR_CROP1 = 1;
         WWAConsts.ATR_CROP2 = 2;
         WWAConsts.ATR_TYPE = 3;
+        WWAConsts.ATR_JUMP_X = 16;
+        WWAConsts.ATR_JUMP_Y = 17;
+        WWAConsts.MAP_LOCALGATE = 2;
         WWAConsts.OBJECT_RANDOM = 16;
+        WWAConsts.OBJECT_LOCALGATE = 18;
         WWAConsts.SYSTEM_MESSAGE_NUM = 20;
         WWAConsts.IMGPOS_DEFAULT_YESNO_X = 3;
         WWAConsts.IMGPOS_DEFAULT_YESNO_Y = 1;
@@ -470,6 +474,7 @@ var loader_core;
 /// <reference path="./loader_util.ts" />
 var loader_extractor;
 (function (loader_extractor) {
+    var PartsType = loader_wwa_data.PartsType;
     var WWADataExtractor = (function () {
         // --- methods and constructors
         function WWADataExtractor(data) {
@@ -494,13 +499,62 @@ var loader_extractor;
                 WWAConsts.OBJ_ATR_MAX : WWAConsts.OLD_OBJ_ATR_MAX);
             this._wwaData.mapAttribute = this._getPartsDataFromBits(loader_wwa_data.PartsType.MAP, this._wwaData.mapPartsMax, mapAttrMax).concat();
             this._wwaData.objectAttribute = this._getPartsDataFromBits(loader_wwa_data.PartsType.OBJECT, this._wwaData.objPartsMax, objAttrMax).concat();
-            // TODO: 下位互換拡張キャラクタ変換
+            //  下位互換拡張キャラクタ変換
             if (this._wwaData.version <= 29) {
-                // 未実装
-                throw new Error("このバージョンのWWAには、現在対応しておりません。\n" +
-                    "マップデータバージョン: " + (Math.floor(this._wwaData.version / 10)) + "." + (this._wwaData.version % 10));
+                this._convertAttributeV2toV3(PartsType.MAP);
+                this._convertAttributeV2toV3(PartsType.OBJECT);
             }
             this._replaceAllRandomObjects();
+        };
+        WWADataExtractor.prototype._convertAttributeV2toV3 = function (partsType) {
+            var partsMax;
+            var attributeArray;
+            var localGateIndex;
+            if (partsType == PartsType.MAP) {
+                partsMax = this._wwaData.mapPartsMax;
+                attributeArray = this._wwaData.mapAttribute;
+                localGateIndex = WWAConsts.MAP_LOCALGATE;
+            }
+            else if (partsType == PartsType.OBJECT) {
+                partsMax = this._wwaData.objPartsMax;
+                attributeArray = this._wwaData.objectAttribute;
+                localGateIndex = WWAConsts.OBJECT_LOCALGATE;
+            }
+            else {
+                throw new Error("謎のパーツ種別が指定されました");
+            }
+            for (var j = 0; j < partsMax; j++) {
+                for (var i = 9; i >= 0; i--) {
+                    var dataChara = attributeArray[j][20 + i * 2] & 0xff;
+                    var dataMode = attributeArray[j][20 + i * 2] >> 8;
+                    var x = attributeArray[j][20 + i * 2 + 1] & 0xff;
+                    var y = attributeArray[j][20 + i * 2 + 1] >> 8;
+                    if (x === 250) {
+                        x = 9000;
+                    }
+                    else if (x > 100) {
+                        x += (10000 - 160);
+                    }
+                    if (y === 250) {
+                        y = 9000;
+                    }
+                    else if (y > 100) {
+                        y += (10000 - 160);
+                    }
+                    attributeArray[j][20 + i * 4] = dataChara;
+                    attributeArray[j][20 + i * 4 + 3] = dataMode;
+                    attributeArray[j][20 + i * 4 + 1] = x;
+                    attributeArray[j][20 + i * 4 + 2] = y;
+                }
+                if (attributeArray[j][WWAConsts.ATR_TYPE] === localGateIndex) {
+                    if (attributeArray[j][WWAConsts.ATR_JUMP_X] > 100) {
+                        attributeArray[j][WWAConsts.ATR_JUMP_X] += (10000 - 160);
+                    }
+                    if (attributeArray[j][WWAConsts.ATR_JUMP_Y] > 100) {
+                        attributeArray[j][WWAConsts.ATR_JUMP_Y] += (10000 - 160);
+                    }
+                }
+            }
         };
         WWADataExtractor.prototype.getJSObject = function () {
             return this._wwaData;

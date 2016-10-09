@@ -10,8 +10,13 @@
         static ATR_CROP1: number = 1;
         static ATR_CROP2: number = 2;
         static ATR_TYPE: number = 3;
+        static ATR_JUMP_X: number = 16;
+        static ATR_JUMP_Y: number = 17;
 
-        static OBJECT_RANDOM: number = 16;
+       static MAP_LOCALGATE: number = 2;
+       static OBJECT_RANDOM: number = 16;
+       static OBJECT_LOCALGATE: number = 18;
+
        static SYSTEM_MESSAGE_NUM: number = 20;
 
        static IMGPOS_DEFAULT_YESNO_X: number = 3;
