@@ -53,7 +53,7 @@ module loader_extractor {
             this._wwaData.version = this._bitData[WWADataExtractor.POS_VERSION];
             this._extractInitialParameters();
 
-            if (this._wwaData.version > 29) {
+            if (this._wwaData.version >= 29) {
                 this._currentPosition = WWADataExtractor.POS_MAPDATA_TOP;
             } else {
                 this._currentPosition = WWADataExtractor.POS_OLD_MAPDATA_TOP;

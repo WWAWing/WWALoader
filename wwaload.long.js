@@ -65,25 +65,25 @@ var loader_wwa_data;
         WWAConsts.DEFAULT_STATUS_COLOR_G = 0x0;
         WWAConsts.DEFAULT_STATUS_COLOR_B = 0x0;
         return WWAConsts;
-    }());
+    })();
     loader_wwa_data.WWAConsts = WWAConsts;
     var LoaderResponse = (function () {
         function LoaderResponse() {
         }
         return LoaderResponse;
-    }());
+    })();
     loader_wwa_data.LoaderResponse = LoaderResponse;
     var LoaderError = (function () {
         function LoaderError() {
         }
         return LoaderError;
-    }());
+    })();
     loader_wwa_data.LoaderError = LoaderError;
     var LoaderProgress = (function () {
         function LoaderProgress() {
         }
         return LoaderProgress;
-    }());
+    })();
     loader_wwa_data.LoaderProgress = LoaderProgress;
     (function (PartsType) {
         PartsType[PartsType["MAP"] = 1] = "MAP";
@@ -150,7 +150,7 @@ var loader_wwa_data;
             return new Coord(this.x, this.y);
         };
         return Coord;
-    }());
+    })();
     loader_wwa_data.Coord = Coord;
     var WWAData = (function () {
         function WWAData() {
@@ -209,7 +209,7 @@ var loader_wwa_data;
             this.statusColorB = void 0;
         }
         return WWAData;
-    }());
+    })();
     loader_wwa_data.WWAData = WWAData;
 })(loader_wwa_data || (loader_wwa_data = {}));
 /// <reference path="./loader_extractor.ts" />
@@ -224,7 +224,7 @@ var loader_core;
             this.extractEndPos = extractEndPos;
         }
         return DecodeResult;
-    }());
+    })();
     var WWALoader = (function () {
         function WWALoader(fileName) {
             this._fileName = fileName;
@@ -455,7 +455,7 @@ var loader_core;
         WWALoader.EXT_LAST_PADDING = 3;
         WWALoader.OLDVER_MESSAGE_MAX = 400;
         return WWALoader;
-    }());
+    })();
     loader_core.WWALoader = WWALoader;
     function sendProgressToMainProgram(current, total, stage) {
         var data = new loader_wwa_data.LoaderResponse();
@@ -485,7 +485,7 @@ var loader_extractor;
             var mapAttrMax, objAttrMax;
             this._wwaData.version = this._bitData[WWADataExtractor.POS_VERSION];
             this._extractInitialParameters();
-            if (this._wwaData.version > 29) {
+            if (this._wwaData.version >= 29) {
                 this._currentPosition = WWADataExtractor.POS_MAPDATA_TOP;
             }
             else {
@@ -750,7 +750,7 @@ var loader_extractor;
         WWADataExtractor.POS_MAPDATA_TOP = 0x5a; // 90
         WWADataExtractor.POS_OLD_MAPDATA_TOP = 0x64; //100
         return WWADataExtractor;
-    }());
+    })();
     loader_extractor.WWADataExtractor = WWADataExtractor;
 })(loader_extractor || (loader_extractor = {}));
 /// <reference path="./loader_config.ts" />
