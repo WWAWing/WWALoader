@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "ES5",
+    "outDir": "..",
+    "outFile": "../wwaload.long.js"
+  },
+  "files": [
+    "loader_base.ts",
+    "loader_config.ts",
+    "loader_core.ts",
+    "loader_extractor.ts",
+    "loader_util.ts",
+    "wwa_data.ts"
+  ],
+  "exclude": [
+    "noworker"
+  ]
+}

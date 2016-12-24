@@ -2,7 +2,7 @@ var loader_conf;
 (function (loader_conf) {
     ;
     loader_conf.conf = {
-        is_worker: false
+        is_worker: true
     };
 })(loader_conf || (loader_conf = {}));
 var loader_util;
@@ -25,71 +25,72 @@ var loader_wwa_data;
     var WWAConsts = (function () {
         function WWAConsts() {
         }
-        WWAConsts.ITEMBOX_SIZE = 12;
-        WWAConsts.MAP_ATR_MAX = 60;
-        WWAConsts.OBJ_ATR_MAX = 60;
-        WWAConsts.OLD_MAP_ATR_MAX = 40;
-        WWAConsts.OLD_OBJ_ATR_MAX = 40;
-        WWAConsts.ATR_CROP1 = 1;
-        WWAConsts.ATR_CROP2 = 2;
-        WWAConsts.ATR_TYPE = 3;
-        WWAConsts.ATR_JUMP_X = 16;
-        WWAConsts.ATR_JUMP_Y = 17;
-        WWAConsts.MAP_LOCALGATE = 2;
-        WWAConsts.OBJECT_RANDOM = 16;
-        WWAConsts.OBJECT_LOCALGATE = 18;
-        WWAConsts.SYSTEM_MESSAGE_NUM = 20;
-        WWAConsts.IMGPOS_DEFAULT_YESNO_X = 3;
-        WWAConsts.IMGPOS_DEFAULT_YESNO_Y = 1;
-        WWAConsts.IMGRELPOS_YESNO_YES_X = 0;
-        WWAConsts.IMGRELPOS_YESNO_NO_X = 1;
-        WWAConsts.IMGRELPOS_YESNO_YESP_X = 2;
-        WWAConsts.IMGRELPOS_YESNO_NOP_X = 3;
-        WWAConsts.IMGPOS_DEFAULT_PLAYER_X = 2;
-        WWAConsts.IMGPOS_DEFAULT_PLAYER_Y = 0;
-        WWAConsts.IMGPOS_DEFAULT_CLICKABLE_ITEM_SIGN_X = 0;
-        WWAConsts.IMGPOS_DEFAULT_CLICKABLE_ITEM_SIGN_Y = 0;
-        WWAConsts.DEFAULT_DISABLE_SAVE = false;
-        WWAConsts.DEFAULT_OLDMAP = false;
-        WWAConsts.DEFAULT_OBJECT_NO_COLLAPSE = false;
-        WWAConsts.DEFAULT_FRAME_COLOR_R = 0xff;
-        WWAConsts.DEFAULT_FRAME_COLOR_G = 0xff;
-        WWAConsts.DEFAULT_FRAME_COLOR_B = 0xff;
-        WWAConsts.DEFAULT_FRAMEOUT_COLOR_R = 0x60;
-        WWAConsts.DEFAULT_FRAMEOUT_COLOR_G = 0x60;
-        WWAConsts.DEFAULT_FRAMEOUT_COLOR_B = 0x60;
-        WWAConsts.DEFAULT_STR_COLOR_R = 0x0;
-        WWAConsts.DEFAULT_STR_COLOR_G = 0x0;
-        WWAConsts.DEFAULT_STR_COLOR_B = 0x0;
-        WWAConsts.DEFAULT_STATUS_COLOR_R = 0x0;
-        WWAConsts.DEFAULT_STATUS_COLOR_G = 0x0;
-        WWAConsts.DEFAULT_STATUS_COLOR_B = 0x0;
         return WWAConsts;
-    })();
+    }());
+    WWAConsts.ITEMBOX_SIZE = 12;
+    WWAConsts.MAP_ATR_MAX = 60;
+    WWAConsts.OBJ_ATR_MAX = 60;
+    WWAConsts.OLD_MAP_ATR_MAX = 40;
+    WWAConsts.OLD_OBJ_ATR_MAX = 40;
+    WWAConsts.ATR_CROP1 = 1;
+    WWAConsts.ATR_CROP2 = 2;
+    WWAConsts.ATR_TYPE = 3;
+    WWAConsts.ATR_JUMP_X = 16;
+    WWAConsts.ATR_JUMP_Y = 17;
+    WWAConsts.MAP_LOCALGATE = 2;
+    WWAConsts.OBJECT_RANDOM = 16;
+    WWAConsts.OBJECT_LOCALGATE = 18;
+    WWAConsts.SYSTEM_MESSAGE_NUM = 20;
+    WWAConsts.IMGPOS_DEFAULT_YESNO_X = 3;
+    WWAConsts.IMGPOS_DEFAULT_YESNO_Y = 1;
+    WWAConsts.IMGRELPOS_YESNO_YES_X = 0;
+    WWAConsts.IMGRELPOS_YESNO_NO_X = 1;
+    WWAConsts.IMGRELPOS_YESNO_YESP_X = 2;
+    WWAConsts.IMGRELPOS_YESNO_NOP_X = 3;
+    WWAConsts.IMGPOS_DEFAULT_PLAYER_X = 2;
+    WWAConsts.IMGPOS_DEFAULT_PLAYER_Y = 0;
+    WWAConsts.IMGPOS_DEFAULT_CLICKABLE_ITEM_SIGN_X = 0;
+    WWAConsts.IMGPOS_DEFAULT_CLICKABLE_ITEM_SIGN_Y = 0;
+    WWAConsts.DEFAULT_DISABLE_SAVE = false;
+    WWAConsts.DEFAULT_OLDMAP = false;
+    WWAConsts.DEFAULT_OBJECT_NO_COLLAPSE = false;
+    WWAConsts.DEFAULT_FRAME_COLOR_R = 0xff;
+    WWAConsts.DEFAULT_FRAME_COLOR_G = 0xff;
+    WWAConsts.DEFAULT_FRAME_COLOR_B = 0xff;
+    WWAConsts.DEFAULT_FRAMEOUT_COLOR_R = 0x60;
+    WWAConsts.DEFAULT_FRAMEOUT_COLOR_G = 0x60;
+    WWAConsts.DEFAULT_FRAMEOUT_COLOR_B = 0x60;
+    WWAConsts.DEFAULT_STR_COLOR_R = 0x0;
+    WWAConsts.DEFAULT_STR_COLOR_G = 0x0;
+    WWAConsts.DEFAULT_STR_COLOR_B = 0x0;
+    WWAConsts.DEFAULT_STATUS_COLOR_R = 0x0;
+    WWAConsts.DEFAULT_STATUS_COLOR_G = 0x0;
+    WWAConsts.DEFAULT_STATUS_COLOR_B = 0x0;
     loader_wwa_data.WWAConsts = WWAConsts;
     var LoaderResponse = (function () {
         function LoaderResponse() {
         }
         return LoaderResponse;
-    })();
+    }());
     loader_wwa_data.LoaderResponse = LoaderResponse;
     var LoaderError = (function () {
         function LoaderError() {
         }
         return LoaderError;
-    })();
+    }());
     loader_wwa_data.LoaderError = LoaderError;
     var LoaderProgress = (function () {
         function LoaderProgress() {
         }
         return LoaderProgress;
-    })();
+    }());
     loader_wwa_data.LoaderProgress = LoaderProgress;
+    var PartsType;
     (function (PartsType) {
         PartsType[PartsType["MAP"] = 1] = "MAP";
         PartsType[PartsType["OBJECT"] = 0] = "OBJECT";
-    })(loader_wwa_data.PartsType || (loader_wwa_data.PartsType = {}));
-    var PartsType = loader_wwa_data.PartsType;
+    })(PartsType = loader_wwa_data.PartsType || (loader_wwa_data.PartsType = {}));
+    var LoadStage;
     (function (LoadStage) {
         LoadStage[LoadStage["INIT"] = 0] = "INIT";
         LoadStage[LoadStage["MAP_LOAD"] = 1] = "MAP_LOAD";
@@ -98,8 +99,7 @@ var loader_wwa_data;
         LoadStage[LoadStage["OBJ_ATTR"] = 4] = "OBJ_ATTR";
         LoadStage[LoadStage["RAND_PARTS"] = 5] = "RAND_PARTS";
         LoadStage[LoadStage["MESSAGE"] = 6] = "MESSAGE";
-    })(loader_wwa_data.LoadStage || (loader_wwa_data.LoadStage = {}));
-    var LoadStage = loader_wwa_data.LoadStage;
+    })(LoadStage = loader_wwa_data.LoadStage || (loader_wwa_data.LoadStage = {}));
     var Coord = (function () {
         /*
         public convertIntoPosition(wwa: wwa_main.WWA): Position {
@@ -150,7 +150,7 @@ var loader_wwa_data;
             return new Coord(this.x, this.y);
         };
         return Coord;
-    })();
+    }());
     loader_wwa_data.Coord = Coord;
     var WWAData = (function () {
         function WWAData() {
@@ -209,7 +209,7 @@ var loader_wwa_data;
             this.statusColorB = void 0;
         }
         return WWAData;
-    })();
+    }());
     loader_wwa_data.WWAData = WWAData;
 })(loader_wwa_data || (loader_wwa_data = {}));
 /// <reference path="./loader_extractor.ts" />
@@ -224,7 +224,7 @@ var loader_core;
             this.extractEndPos = extractEndPos;
         }
         return DecodeResult;
-    })();
+    }());
     var WWALoader = (function () {
         function WWALoader(fileName) {
             this._fileName = fileName;
@@ -451,11 +451,11 @@ var loader_core;
                 }
             }
         };
-        WWALoader.MEM_BLOCK = 65000;
-        WWALoader.EXT_LAST_PADDING = 3;
-        WWALoader.OLDVER_MESSAGE_MAX = 400;
         return WWALoader;
-    })();
+    }());
+    WWALoader.MEM_BLOCK = 65000;
+    WWALoader.EXT_LAST_PADDING = 3;
+    WWALoader.OLDVER_MESSAGE_MAX = 400;
     loader_core.WWALoader = WWALoader;
     function sendProgressToMainProgram(current, total, stage) {
         var data = new loader_wwa_data.LoaderResponse();
@@ -723,34 +723,34 @@ var loader_extractor;
             }
             this._wwaData.mapObject[x][y] = afterPartsID;
         };
-        // --- vars ---
-        WWADataExtractor.POS_CHECK = 0x00; //  0
-        WWADataExtractor.POS_VERSION = 0x02; //  2
-        WWADataExtractor.POS_OLD_MAP_COUNT = 0x03; //  3
-        WWADataExtractor.POS_OLD_OBJ_COUNT = 0x04; //  4
-        WWADataExtractor.POS_OLD_PLAYER_X = 0x05; //  5
-        WWADataExtractor.POS_OLD_PLAYER_Y = 0x06; //  6
-        WWADataExtractor.POS_STATUS_ENERGY = 0x0a; // 10
-        WWADataExtractor.POS_STATUS_STRENGTH = 0x0c; // 12
-        WWADataExtractor.POS_STATUS_DEFENCE = 0x0e; // 14
-        WWADataExtractor.POS_STATUS_GOLD = 0x10; // 16
-        WWADataExtractor.POS_OLD_GAMEOVER_X = 0x12; // 18
-        WWADataExtractor.POS_OLD_GAMEOVER_Y = 0x13; // 19
-        WWADataExtractor.POS_OLD_ITEMBOX_TOP = 0x14; // 20
-        WWADataExtractor.POS_STATUS_ENERGY_MAX = 0x20; // 32
-        WWADataExtractor.POS_MAP_COUNT = 0x22; // 34
-        WWADataExtractor.POS_OBJ_COUNT = 0x24; // 36
-        WWADataExtractor.POS_PLAYER_X = 0x26; // 38
-        WWADataExtractor.POS_PLAYER_Y = 0x28; // 40
-        WWADataExtractor.POS_GAMEOVER_X = 0x2a; // 42
-        WWADataExtractor.POS_GAMEOVER_Y = 0x2c; // 44
-        WWADataExtractor.POS_MAP_SIZE = 0x2e; // 46
-        WWADataExtractor.POS_MESSAGE_NUM = 0x30; // 48
-        WWADataExtractor.POS_ITEMBOX_TOP = 0x3c; // 60
-        WWADataExtractor.POS_MAPDATA_TOP = 0x5a; // 90
-        WWADataExtractor.POS_OLD_MAPDATA_TOP = 0x64; //100
         return WWADataExtractor;
-    })();
+    }());
+    // --- vars ---
+    WWADataExtractor.POS_CHECK = 0x00; //  0
+    WWADataExtractor.POS_VERSION = 0x02; //  2
+    WWADataExtractor.POS_OLD_MAP_COUNT = 0x03; //  3
+    WWADataExtractor.POS_OLD_OBJ_COUNT = 0x04; //  4
+    WWADataExtractor.POS_OLD_PLAYER_X = 0x05; //  5
+    WWADataExtractor.POS_OLD_PLAYER_Y = 0x06; //  6
+    WWADataExtractor.POS_STATUS_ENERGY = 0x0a; // 10
+    WWADataExtractor.POS_STATUS_STRENGTH = 0x0c; // 12
+    WWADataExtractor.POS_STATUS_DEFENCE = 0x0e; // 14
+    WWADataExtractor.POS_STATUS_GOLD = 0x10; // 16
+    WWADataExtractor.POS_OLD_GAMEOVER_X = 0x12; // 18
+    WWADataExtractor.POS_OLD_GAMEOVER_Y = 0x13; // 19
+    WWADataExtractor.POS_OLD_ITEMBOX_TOP = 0x14; // 20
+    WWADataExtractor.POS_STATUS_ENERGY_MAX = 0x20; // 32
+    WWADataExtractor.POS_MAP_COUNT = 0x22; // 34
+    WWADataExtractor.POS_OBJ_COUNT = 0x24; // 36
+    WWADataExtractor.POS_PLAYER_X = 0x26; // 38
+    WWADataExtractor.POS_PLAYER_Y = 0x28; // 40
+    WWADataExtractor.POS_GAMEOVER_X = 0x2a; // 42
+    WWADataExtractor.POS_GAMEOVER_Y = 0x2c; // 44
+    WWADataExtractor.POS_MAP_SIZE = 0x2e; // 46
+    WWADataExtractor.POS_MESSAGE_NUM = 0x30; // 48
+    WWADataExtractor.POS_ITEMBOX_TOP = 0x3c; // 60
+    WWADataExtractor.POS_MAPDATA_TOP = 0x5a; // 90
+    WWADataExtractor.POS_OLD_MAPDATA_TOP = 0x64; //100
     loader_extractor.WWADataExtractor = WWADataExtractor;
 })(loader_extractor || (loader_extractor = {}));
 /// <reference path="./loader_config.ts" />
@@ -791,4 +791,11 @@ function loader_start(e) {
 if (loader_conf.conf.is_worker) {
     addEventListener("message", loader_start);
 }
+var loader_conf;
+(function (loader_conf) {
+    ;
+    loader_conf.conf = {
+        is_worker: false
+    };
+})(loader_conf || (loader_conf = {}));
 //# sourceMappingURL=wwaload.long.noworker.js.map

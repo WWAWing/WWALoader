@@ -25,12 +25,12 @@ var postMessage_noWorker = messageHandler;
 var main = function () {
     t_start = new Date();
     if (use_worker) {
-        var worker = new Worker("./wwaload.long.js");
+        var worker = new Worker("./wwaload.js");
         worker.postMessage({ "fileName": "./" + EXTRACTING_MAPDATA_FILENAME });
         worker.addEventListener("message", messageHandler)
     } else {
         var script = document.createElement("script")
-        script.src = "wwaload.long.noworker.js";
+        script.src = "wwaload.noworker.js";
         document.getElementsByTagName("head")[0].appendChild(script);
         if (script.readyState === "complete") {
             loader_start(
@@ -58,7 +58,7 @@ var $id = function (id) {
 var disp = function (data) {
     t_end = new Date();
 
-    console.log(data);   
+    console.log(data);
 
     ($id("loadTime")).value = t_end - t_start;
 
@@ -79,7 +79,7 @@ var disp = function (data) {
        "worldName",
        "mapCGName"
     ];
-    
+
     for (var i in ids) {
         var key = ids[i];
         try {

@@ -1,0 +1,35 @@
+{
+  "name": "wwa-loader",
+  "version": "1.0.7",
+  "description": "a World Wide Adventure mapdata loader for client-side web applications",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts-compile": "tsc -p src",
+    "ts-compile-noworker": "tsc -p src/noworker",
+    "closure-compile": "node util/closure-compile.js wwaload.long.js wwaload.js wwaload.js.1.map",
+    "closure-compile-noworker": "node util/closure-compile.js wwaload.long.noworker.js wwaload.noworker.js wwaload.noworker.js.1.map",
+    "combine-sourcemap":
+     "node util/combine-sourcemaps.js wwaload.long.js.map wwaload.js.1.map > wwaload.js.map && node util/rm.js wwaload.js.1.map && node util/rm.js wwaload.long.js.map",
+    "combine-sourcemap-noworker":
+     "node util/combine-sourcemaps.js wwaload.long.noworker.js.map wwaload.noworker.js.1.map > wwaload.noworker.js.map && node util/rm.js wwaload.noworker.js.1.map && node util/rm.js wwaload.long.noworker.js.map"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WWAWing/WWALoader.git"
+  },
+  "keywords": [
+    "WWA"
+  ],
+  "author": "Matsuyuki (@rmn_e)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WWAWing/WWALoader/issues"
+  },
+  "homepage": "https://github.com/WWAWing/WWALoader#readme",
+  "dependencies": {
+    "google-closure-compiler": "^20161201.0.0",
+    "multi-stage-sourcemap": "^0.2.1",
+    "typescript": "~2.1.4"
+  }
+}
