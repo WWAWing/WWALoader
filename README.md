@@ -5,7 +5,7 @@ WebWorkers対応版( wwaload.js )と WebWorkers非対応版( wwaload.noworker.js
 参考までに、WWA Wingでは「wwaload.js」を、WWA Phoenixでは「wwaload.noworker.js」を使っています。用途に応じて使い分けてください。
 
 ## ライセンス
-- MIT License。詳しくは「LICENSE」ファイルを参照。
+- MIT License (Expat)。詳しくは「LICENSE」ファイルを参照。
 
 ### 同梱物のライセンスについて
 テスト用にスタンダードマップのデータ「wwamap.dat」を同梱していますが、このファイルの著作権の取り扱いについてはキャラバンサークル
