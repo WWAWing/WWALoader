@@ -8,3 +8,8 @@ noworker/loader_core.ts
 noworker/loader_extractor.ts
 noworker/loader_util.ts
 noworker/wwa_data.ts
+node_modules/
+build-tmp/
+lib/
+debug/*.js
+debug/*.map

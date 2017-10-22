@@ -1,0 +1,40 @@
+{
+  "name": "@wwawing/loader",
+  "version": "0.0.0",
+  "description": "a World Wide Adventure mapdata loader for client-side web applications",
+  "main": "test.js",
+  "scripts": {
+    "start": "npm run clean:debug && npm run start:deploy && http-server ./debug -o",
+    "start:deploy": "cpx lib/* debug",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:prepare && npm run build:normal && npm run build:noworker && npm run clean:tmp",
+    "build:prepare": "npm run clean:tmp && cpx src/**/*.ts build-tmp && cpx build-tmp/*.ts build-tmp/noworker",
+    "build:normal": "npm run build:normal:tsc && npm run build:normal:uglify",
+    "build:normal:tsc": "tsc --sourceMap ./build-tmp/loader_base.ts -t ES5 --outDir ./lib --out ./lib/wwaload.long.js",
+    "build:normal:uglify": "uglifyjs -c -o ./lib/wwaload.js --source-map --in-source-map ./lib/wwaload.long.js.map ./lib/wwaload.long.js",
+    "build:noworker": "npm run build:noworker:tsc && npm run build:noworker:uglify",
+    "build:noworker:tsc": "tsc --sourceMap ./build-tmp/noworker/loader_base.ts -t ES5 --outDir ./lib --out ./lib/wwaload.long.noworker.js",
+    "build:noworker:uglify": "uglifyjs -c -o ./lib/wwaload.noworker.js --source-map --in-source-map ./lib/wwaload.long.noworker.js.map ./lib/wwaload.long.noworker.js",
+    "clean": "npm run clean:debug && npm run clean:tmp && npm run clean:lib",
+    "clean:tmp": "rimraf build-tmp",
+    "clean:lib": "rimraf lib",
+    "clean:debug": "rimraf debug/wwaload.*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WWAWing/WWALoader.git"
+  },
+  "author": "WWA Wing Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WWAWing/WWALoader/issues"
+  },
+  "homepage": "https://github.com/WWAWing/WWALoader#readme",
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "http-server": "^0.10.0",
+    "rimraf": "^2.6.2",
+    "typescript": "^2.5.3",
+    "uglify-js": "^3.1.5"
+  }
+}
