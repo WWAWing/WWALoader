@@ -13,3 +13,4 @@ build-tmp/
 lib/
 debug/*.js
 debug/*.map
+.node-version
