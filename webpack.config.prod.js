@@ -1,5 +1,6 @@
 const config = require("./webpack.config.js");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+
 config.output.pathinfo = false;
 config.plugins.push(new UglifyJsPlugin({
     uglifyOptions:{
@@ -10,5 +11,6 @@ config.plugins.push(new UglifyJsPlugin({
     },
     extractComments: false
 }));
-config.output.filename = "index.js";
+config.output.filename = "wwaloader.js";
+
 module.exports = config;
