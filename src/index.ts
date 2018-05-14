@@ -1,7 +1,15 @@
 ﻿declare function postMessage(message: any): void;
 declare function postMessage_noWorker(message: any): void;
+
+import { util } from "./loader_util";
+import * as loader_wwa_data from "./wwa_data";
+import { WWAConsts, WWAData } from "./wwa_data";
+import { WWADataExtractor } from "./loader_extractor";
+import { WWALoader } from "./loader_core";
+import { conf } from "./loader_config";
+
 export function sendToMain(m: any): void {
-    if (loader_conf.conf.is_worker) {
+    if (conf.is_worker) {
         postMessage(m);
     } else {
         postMessage_noWorker({
@@ -9,12 +17,6 @@ export function sendToMain(m: any): void {
         });
     }
 }
-
-import { util } from "./loader_util";
-import * as loader_wwa_data from "./wwa_data";
-import { WWAConsts, WWAData } from "./wwa_data";
-import { WWADataExtractor } from "./loader_extractor";
-import { WWALoader } from "./loader_core";
 
 function loader_start( e: MessageEvent ): void {
      if (e.data.fileName !== void 0) {
@@ -32,6 +34,6 @@ function loader_start( e: MessageEvent ): void {
     }   
 }
 
-if (loader_conf.conf.is_worker) {
+if (conf.is_worker) {
     addEventListener("message", loader_start);
 }

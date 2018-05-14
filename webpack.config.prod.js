@@ -11,6 +11,6 @@ config.plugins.push(new UglifyJsPlugin({
     },
     extractComments: false
 }));
-config.output.filename = "wwaloader.js";
+config.output.filename = "wwaload.js";
 
 module.exports = config;

@@ -4,6 +4,6 @@ const webpack = require("webpack");
 config.plugins[0] = new webpack.DefinePlugin({
     IS_WEB_WORKER_MODE: JSON.stringify(false)
 });
-config.output.filename = "wwaloader.noworker.js";
+config.output.filename = "wwaload.noworker.js";
 
 module.exports = config;

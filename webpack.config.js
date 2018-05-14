@@ -5,7 +5,7 @@ module.exports = {
     mode: "development",
     entry: "./src/index.ts",
     output: {
-        filename: "wwaloader.long.js",
+        filename: "wwaload.long.js",
         path: path.resolve(__dirname, "lib")
     },
     resolve: {
