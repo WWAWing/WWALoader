@@ -1,11 +1,11 @@
-var webpack = require('webpack');
+const webpack = require("webpack");
 const path = require("path");
 
 module.exports = {
     mode: "development",
     entry: "./src/index.ts",
     output: {
-        filename: "index.js",
+        filename: "index.dev.js",
         path: path.resolve(__dirname, "lib")
     },
     resolve: {

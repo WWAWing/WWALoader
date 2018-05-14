@@ -4,7 +4,7 @@ import { WWAConsts } from "./wwa_data";
 import { sendToMain } from ".";
 import { util } from "./loader_util";
 
-class DecodeResult {
+export class DecodeResult {
   public mapData: Uint8Array;
   public extractEndPos: number;
   public constructor(mapData: Uint8Array, extractEndPos) {

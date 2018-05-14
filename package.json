@@ -9,11 +9,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build:prepare && npm run build:normal && npm run build:noworker && npm run clean:tmp",
     "build:prepare": "npm run clean:tmp && shx mkdir -p build-tmp && shx cp -r src/* build-tmp && shx cp -r build-tmp/*.ts build-tmp/noworker",
-    "build:normal": "npm run build:normal:tsc && npm run build:normal:uglify",
-    "build:normal:tsc": "tsc --sourceMap ./build-tmp/loader_base.ts -t ES5 --outDir ./lib --out ./lib/wwaload.long.js",
-    "build:normal:uglify": "uglifyjs -c -o ./lib/wwaload.js --source-map --in-source-map ./lib/wwaload.long.js.map ./lib/wwaload.long.js",
+    "build:normal": "npm run build:normal:dev && npm run build:normal:prod",
+    "build:normal:dev": "webpack",
+    "build:normal:prod": "webpack --config ./webpack.config.prod.js",
     "build:noworker": "npm run build:noworker:tsc && npm run build:noworker:uglify",
-    "build:noworker:tsc": "tsc --sourceMap ./build-tmp/noworker/loader_base.ts -t ES5 --outDir ./lib --out ./lib/wwaload.long.noworker.js",
+    "build:noworker:prod": " ./lib --out ./lib/wwaload.long.noworker.js",
     "build:noworker:uglify": "uglifyjs -c -o ./lib/wwaload.noworker.js --source-map --in-source-map ./lib/wwaload.long.noworker.js.map ./lib/wwaload.long.noworker.js",
     "clean": "npm run clean:debug && npm run clean:tmp && npm run clean:lib",
     "clean:tmp": "shx rm -rf build-tmp",
@@ -37,6 +37,7 @@
     "ts-loader": "^4.2.0",
     "typescript": "^2.5.3",
     "uglify-js": "^3.1.5",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15"
   }
