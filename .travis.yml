@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+- 8.9.1
+install: true
+branches:
+  only:
+  - master
+env:
+  global:
+  - GIT_COMMITTER_NAME="WWA Helper"
+  - GIT_COMMITTER_EMAIL="matsuyuki.eca@gmail.com"
+  - GIT_AUTHOR_NAME="WWA Helper"
+  - GIT_AUTHOR_EMAIL="matsuyuki.eca@gmail.com"
+deploy:
+  provider: releases
+  api_key:
+    secure: FkpwaazEYlYED3NIvTwVPti4Xtm7TmgnuhXfIEhU38e7T1oPfhNjvCxhwqRfq2CE90fDEOgOoBS8GryHaG9Wn2FEXR4KR37wRSXQZ2NIjFnUrh11flyuA7e61VYCWjSIvANmjD7WDfyFdShHer+mEv50kV40I/SkA55dMgQdnK7ACZtHbfP/qhMkpcMFlSt/rHlHaww43F8Vl4Bb48NXENIk85QXCwCSXoXKdI0U1Ae4rLbVofpFQltNNB6yvvZHg5y+agSa3jdh0B1yqiW9ldx76zuGr8eyRWPZhTwSKaVVKU79Ct3/bdVSSTCOO+eTq42qGm24mmhygjfpf+BFCLa8VkekOBkTPKEUultw7PSCVSgsx+EBIXFTC3fdFHcdS9RV4gcaeU3vZ3556a0T8AXfewY81XhVfF9gaToN8c+wBhUTm+zyeACJvC7BY1x78RwCZA7GAAot2IfFb/nX929BKr62aEdsCyEbz6k8jVhupCIEx5r24JNKmLKaV6VY76QHoztu2TTfCaJ3ywbEDMujBjPq0ROAMXGOk1kF00rGm5mbO2vfCXvoSQzyQMoe/xoReSbfqdJSCDI6Cb6LCm/+KBSZuFwQAOB2zvaql21NgPJYKULZFWWTmNsy5S5cYH90VPBkCpDGMoWIzfBNDUkhVjDCLGdo6707wXTBI4c=
+  file: lib/*
+  on:
+    repo: WWAWing/WWALoader
