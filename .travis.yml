@@ -6,6 +6,11 @@ branches:
   only:
   - master
   - chore/npm-package
+before_install:
+- openssl aes-256-cbc -K "$encrypted_1c695f4d2e9f_key" -iv "$encrypted_1c695f4d2e9f_iv"
+  -in travis-wwa.enc -out ~/.ssh/id_ed25519 -d
+- chmod 0600 ~/.ssh/id_ed25519
+- echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 before_deploy:
 - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - git remote set-url origin git@github.com:rmn31415/WWALoader.git
@@ -27,8 +32,3 @@ deploy:
     branch:
     - master
     - chore/npm-package
-before_install:
-- openssl aes-256-cbc -K "$encrypted_1c695f4d2e9f_key" -iv "$encrypted_1c695f4d2e9f_iv"
-  -in travis-wwa.enc -out ~/.ssh/id_ed25519 -d
-- chmod 0600 ~/.ssh/id_ed25519
-- echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
