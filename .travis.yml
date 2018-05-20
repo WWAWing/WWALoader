@@ -5,6 +5,7 @@ install: true
 branches:
   only:
   - master
+  - chore/npm-package
 env:
   global:
   - GIT_COMMITTER_NAME="WWA Helper"
