@@ -6,22 +6,11 @@ branches:
   only:
   - master
   - chore/npm-package
-env:
-  global:
-  - GIT_COMMITTER_NAME="WWA Helper"
-  - GIT_COMMITTER_EMAIL="matsuyuki.eca@gmail.com"
-  - GIT_AUTHOR_NAME="WWA Helper"
-  - GIT_AUTHOR_EMAIL="matsuyuki.eca@gmail.com"
 deploy:
   provider: releases
   api_key:
-    secure: FkpwaazEYlYED3NIvTwVPti4Xtm7TmgnuhXfIEhU38e7T1oPfhNjvCxhwqRfq2CE90fDEOgOoBS8GryHaG9Wn2FEXR4KR37wRSXQZ2NIjFnUrh11flyuA7e61VYCWjSIvANmjD7WDfyFdShHer+mEv50kV40I/SkA55dMgQdnK7ACZtHbfP/qhMkpcMFlSt/rHlHaww43F8Vl4Bb48NXENIk85QXCwCSXoXKdI0U1Ae4rLbVofpFQltNNB6yvvZHg5y+agSa3jdh0B1yqiW9ldx76zuGr8eyRWPZhTwSKaVVKU79Ct3/bdVSSTCOO+eTq42qGm24mmhygjfpf+BFCLa8VkekOBkTPKEUultw7PSCVSgsx+EBIXFTC3fdFHcdS9RV4gcaeU3vZ3556a0T8AXfewY81XhVfF9gaToN8c+wBhUTm+zyeACJvC7BY1x78RwCZA7GAAot2IfFb/nX929BKr62aEdsCyEbz6k8jVhupCIEx5r24JNKmLKaV6VY76QHoztu2TTfCaJ3ywbEDMujBjPq0ROAMXGOk1kF00rGm5mbO2vfCXvoSQzyQMoe/xoReSbfqdJSCDI6Cb6LCm/+KBSZuFwQAOB2zvaql21NgPJYKULZFWWTmNsy5S5cYH90VPBkCpDGMoWIzfBNDUkhVjDCLGdo6707wXTBI4c=
+    secure: "djpk7LiGHrh8xfr12yrp9jLD9xZFRU7ouLiIy6s44eem+ORNlphb7JIbNwBM5w164mmJJWvC2lW2c8GG/0KnbHbQl4aVh3lsLRq9VwmZL9/KWCVE3UIQweYlbtjn46QPB54JREn+7zdot8e7JL5paVK7avrSmXpedEtPQRKQwF8657LjWRP5EiwDztRRpMB7dAxYL7VCyN0G5y/IRtE5vwGkXPaE73bNK+5APOBS62bJ7nRdfrYzBB/njBUAusdVYvkmCRgV3f8/hDhXoNMuTqebqwIigvgF7s1rVqoP9u8F6nM/5V8dsacIreek7diBLSLfhixo5ZtmXjNM0cDiqpDquN4FBj6Lrhsbe8ra1t3kFmPvxZ2bAMWhpBsy0CypC49RszvgGOPlRPAV3j/mEQX04ORDRc3BUOaRAZJAAw8BQF8Z9aN0ZpxUbJibHzjoXHvNl7u/jVaBsEYtg2svU4iKcT8GoLduTnuDu16VGD87SFhrqYXEAOy2+j+trmbsA84adUDhZrGrdfS8Qz7GtGUdmn3lVTAkmoVeYdNk2Vel4b0RULhmxDujPbGvnuf9QFiD1e/Mezo3YVHaJ3AYcv2osCL5DYZp9Lqa9rZbdQ7OnFObZp3DhaZKHd4oeW83hSF8zz7F5rqqYz7M917iZ0aTYORw/oB17CesD888II0="
   file: lib/*
+  skip_cleanup: true
   on:
-    repo:
-    - rmn31415/WWALoader
-    - WWAWing/WWALoader
-    branch:
-    - master
-    - chore/npm-package
-    
+    branch: chore/npm-package
