@@ -6,6 +6,12 @@ branches:
   only:
   - master
   - chore/npm-package
+ before_deploy:
+      - git config --local user.name "WWAWingTeam"
+      - git config --local user.email "matsuyuki.eca@gmail.com"
+      - export RELEASE_VERSION="v$(node get_version.js)" 
+      - git tag $RELEASE_VERSION
+      - git push $RELEASE_VERSION
 deploy:
   provider: releases
   api_key:
