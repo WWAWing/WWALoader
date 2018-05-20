@@ -9,13 +9,14 @@ branches:
   only:
   - master
   - chore/npm-package
- before_deploy:
-      - git config --local user.name "WWAWingTeam"
-      - git config --local user.email "matsuyuki.eca@gmail.com"
-      - export RELEASE_VERSION="v$(node get_version.js)" 
-      - git tag $RELEASE_VERSION
-      - git push $RELEASE_VERSION
-  #   - npm publish # 準備中!
+
+before_deploy:
+  - git config --local user.name "WWAWingTeam"
+  - git config --local user.email "matsuyuki.eca@gmail.com"
+  - export RELEASE_VERSION="v$(node get_version.js)" 
+  - git tag $RELEASE_VERSION
+  - git push origin $RELEASE_VERSION HEAD:chore/npm-package ## master切替時変更
+  #   - npm publish
 
 deploy:
   provider: releases
@@ -25,5 +26,5 @@ deploy:
   skip_cleanup: true
   on:
     branch:
-      - master
-      - chore/npm-package
+    - master
+    - chore/npm-package
