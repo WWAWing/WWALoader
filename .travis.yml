@@ -11,6 +11,8 @@ before_deploy:
 - git remote set-url origin git@github.com:rmn31415/WWALoader.git
 - git config --local user.name "WWAWingTeam"
 - git config --local user.email "matsuyuki.eca@gmail.com"
+- npm install
+- npm run build
 - export RELEASE_VERSION="v$(node get_version.js)"
 - git tag $RELEASE_VERSION
 - git push origin $RELEASE_VERSION HEAD:chore/npm-package
@@ -27,6 +29,5 @@ deploy:
 before_install:
 - openssl aes-256-cbc -K "$encrypted_1c695f4d2e9f_key" -iv "$encrypted_1c695f4d2e9f_iv"
   -in travis-wwa.enc -out ~/.ssh/id_ed25519 -d
-
 - chmod 0600 ~/.ssh/id_ed25519
 - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
