@@ -1,7 +1,10 @@
 language: node_js
+
 node_js:
 - 8.9.1
+
 install: true
+
 branches:
   only:
   - master
@@ -12,6 +15,8 @@ branches:
       - export RELEASE_VERSION="v$(node get_version.js)" 
       - git tag $RELEASE_VERSION
       - git push $RELEASE_VERSION
+  #   - npm publish # 準備中!
+
 deploy:
   provider: releases
   api_key:
@@ -19,4 +24,6 @@ deploy:
   file: lib/*
   skip_cleanup: true
   on:
-    branch: chore/npm-package
+    branch:
+      - master
+      - chore/npm-package
