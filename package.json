@@ -2,7 +2,7 @@
   "name": "@wwawing/loader",
   "version": "0.0.4",
   "description": "a World Wide Adventure mapdata loader for client-side web applications",
-  "main": "test.js",
+  "main": "./lib/wwaload.js",
   "scripts": {
     "start": "npm run clean:debug && npm run start:deploy && http-server ./debug -o",
     "start:deploy": "shx mkdir -p debug && shx cp -R lib/*.js debug && shx cp -R resources/* debug",
