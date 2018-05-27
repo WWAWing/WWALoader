@@ -2,14 +2,8 @@
 closure/compiler.jar
 closure/README.md
 closure/COPYING
-noworker/loader_base.ts
-noworker/loader_config.ts
-noworker/loader_core.ts
-noworker/loader_extractor.ts
-noworker/loader_util.ts
-noworker/wwa_data.ts
 node_modules/
 build-tmp/
 lib/
-debug/*.js
-debug/*.map
+debug/
+.node-version
